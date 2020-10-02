@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build",
-    "export": "EXPORTING=true sapper export",
+    "export": "EXPORTING=true sapper export --entry \"/ /family\"",
     "start": "npm run build && node __sapper__/build"
   },
   "dependencies": {
