@@ -1,11 +1,11 @@
 <script>
-  import { stores } from "@sapper/app";
-  const { preloading, page, session } = stores();
   import { onMount } from "svelte";
   let family = null;
+  let id = null;
   onMount(async () => {
+    id = window.location.hash.slice(1);
     family = await fetch(
-      `https://cdn.comp-soc.com/families/${$page.params.id}.json`
+      `https://cdn.comp-soc.com/families/${id}.json`
     ).then((r) => r.json());
   });
 </script>
@@ -14,7 +14,7 @@
   <h1 class="font-display text-2xl sm:text-4xl text-center text-primary mt-20">
     Ac<span class="text-gray-900">Fams</span>
   </h1>
-  <h2 class="text-center p-4"><code>{$page.params.id}</code></h2>
+  <h2 class="text-center p-4"><code>{id}</code></h2>
   {#if family}
     <h2 class="text-2xl p-4 font-display">Parents</h2>
     <div class="grid grid-cols-1 lg:grid-cols-2">
